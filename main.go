@@ -2,21 +2,25 @@ package main
 
 import (
 	"fmt"
-	"os"
+	"math/rand"
+	"time"
 )
 
 func main() {
-	// words := strings.Fields(
-	// 	"Lazy cat jumps again and again and again",
-	// )
 
-	// for j := 0; j < len(words); j++ {
-	// 	fmt.Printf("#%-2d: %q\n", j+1, words[j])
-	// }
+	rand.Seed(time.Now().UnixNano())
 
-	for _, v := range os.Args[1:] {
-		fmt.Printf("%q\n", v)
+	guess := 10
 
+	for turn := 0; turn < 5; turn++ {
+
+		n := rand.Intn(guess + 1)
+
+		if n == guess {
+			fmt.Println("YOU WIN!!")
+			return
+		}
 	}
+	fmt.Println("YOU LOST.... TRY AGAIN!!")
 
 }
